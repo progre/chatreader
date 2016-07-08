@@ -1,0 +1,15 @@
+sudo: false
+language: node_js
+node_js: 6
+addons:
+  apt:
+    packages:
+      - wine
+cache:
+  directories:
+    - node_modules
+script:
+  - npm run typings
+  - npm run build
+after_script:
+  - npm run package
