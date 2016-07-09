@@ -1,9 +1,9 @@
 {
-  "name": "template-typescript",
-  "description": "Project template.",
+  "name": "chatreader",
+  "description": "Chat Reader for Broadcaster.",
   "version": "1.0.0",
   "author": "progre",
-  "bugs": "https://github.com/progre/template-typescript/issues",
+  "bugs": "https://github.com/progre/chatreader/issues",
   "dependencies": {
     "log4js": "^0.6.37"
   },
@@ -48,15 +48,14 @@
   "files": [
     "lib"
   ],
-  "homepage": "https://github.com/progre/template-typescript/",
+  "homepage": "https://github.com/progre/chatreader/",
   "keywords": [
-    "electron",
-    "template"
+    "electron"
   ],
   "license": "MIT",
   "main": "lib/index.js",
   "private": true,
-  "repository": "https://github.com/progre/template-typescript.git",
+  "repository": "https://github.com/progre/chatreader.git",
   "scripts": {
     "build": "gulp release-build",
     "package": "gulp electron:package",
