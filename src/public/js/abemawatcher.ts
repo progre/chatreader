@@ -1,41 +1,7 @@
-/// <reference path="../../../typings/index.d.ts" />
-import "babel-polyfill";
 import { EventEmitter } from "events";
 const fetch: typeof _fetch.fetch = require("node-fetch");
 
-async function main() {
-    let speaker = await Speaker.create();
-    let watcher = new AbemaWatcher(21898);
-    watcher.on("comment", (data: any[]) => {
-        for (let datum of data) {
-            speaker.speak(datum.comment);
-        }
-    });
-    watcher.watch();
-    speaker.speak(`番組ID ぺけぺけ の読み上げを開始します`);
-}
-
-class Speaker {
-    static async create() {
-        await new Promise((resolve, reject) => {
-            speechSynthesis.addEventListener("voiceschanged", resolve);
-        });
-        let voice = speechSynthesis.getVoices()
-            .filter(x => x.lang === "ja-JP")[0];
-        return new Speaker(voice);
-    }
-
-    constructor(private voice: SpeechSynthesisVoice) {
-    }
-
-    speak(text: string) {
-        let utterance = new SpeechSynthesisUtterance(text);
-        utterance.voice = this.voice;
-        speechSynthesis.speak(utterance);
-    }
-}
-
-class AbemaWatcher extends EventEmitter {
+export default class AbemaWatcher extends EventEmitter {
     private latestMillisecond = -1;
     private timer: NodeJS.Timer;
 
@@ -80,5 +46,3 @@ async function getComments(programId: number) {
     let json = await res.json();
     return <any[]>json.data;
 }
-
-main().catch(e => console.error(e.stack || e));

@@ -10,6 +10,8 @@
     "node-fetch": "registry:dt/node-fetch#0.0.0+20160607205125",
     "power-assert": "registry:dt/power-assert#0.0.0+20160316155526",
     "power-assert-formatter": "registry:dt/power-assert-formatter#0.0.0+20160317120654",
+    "react": "registry:dt/react#0.14.0+20160630100702",
+    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
     "webspeechapi": "registry:dt/webspeechapi#0.0.0+20160316155526"
   }
 }
