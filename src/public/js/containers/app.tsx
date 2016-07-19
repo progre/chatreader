@@ -5,7 +5,7 @@ import Model from "../models/model.ts";
 
 interface State {
     speaker?: Speaker;
-    fresh?: {
+    fresh: {
         enable: boolean,
         programId: number,
         updateVisible: boolean
@@ -28,7 +28,7 @@ export default class App extends React.Component<{}, State> {
         (async () => {
             let speaker = await Speaker.create();
             this.model = new Model(speaker);
-            this.setState({ speaker });
+            this.setState({ speaker } as any);
         })().catch(e => console.error(e.stack || e));
     }
 

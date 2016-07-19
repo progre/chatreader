@@ -7,7 +7,7 @@ import App from "./containers/app.tsx";
 async function main() {
     ReactDOM.render(
         <App/>,
-        document.getElementById("root"));
+        document.getElementById("root")!);
 }
 
 main().catch(e => console.error(e.stack || e));
