@@ -5,7 +5,6 @@
   "globalDependencies": {
     "empower": "registry:dt/empower#0.0.0+20160317120654",
     "github-electron": "registry:dt/github-electron#1.2.5+20160624085047",
-    "material-ui": "registry:dt/material-ui#0.15.1+20160701192820",
     "mocha": "registry:dt/mocha#2.2.5+20160619032855",
     "node": "registry:dt/node#6.0.0+20160621231320",
     "node-fetch": "registry:dt/node-fetch#0.0.0+20160607205125",
@@ -13,7 +12,6 @@
     "power-assert-formatter": "registry:dt/power-assert-formatter#0.0.0+20160317120654",
     "react": "registry:dt/react#0.14.0+20160630100702",
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
-    "react-tap-event-plugin": "registry:dt/react-tap-event-plugin#0.0.0+20160602142434",
     "webspeechapi": "registry:dt/webspeechapi#0.0.0+20160316155526"
   }
 }
