@@ -6,9 +6,7 @@
   "bugs": "https://github.com/progre/chatreader/issues",
   "dependencies": {
     "log4js": "^0.6.37",
-    "node-fetch": "^1.5.3",
-    "react": "^15.2.1",
-    "react-dom": "^15.2.1"
+    "node-fetch": "^1.5.3"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
@@ -41,6 +39,8 @@
     "native-promisify": "^1.2.0",
     "node-fetch": "^1.5.3",
     "power-assert": "^1.4.1",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
     "source-map-support": "^0.4.2",
     "tsify": "^1.0.1",
     "tslint": "^3.13.0",
