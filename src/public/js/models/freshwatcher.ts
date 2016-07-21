@@ -11,7 +11,7 @@ export default class AbemaWatcher extends EventEmitter {
 
     async watch() {
         let comments = await getComments(this.programId);
-        this.latestMillisecond = comments[0].millisecond;
+        this.latestMillisecond = comments[0].millisecond; // TODO: 時刻バラバラなので既読のidを取得数分くらい持っとくのがよさそう
         this.timer = setInterval(
             async () => {
                 try {
