@@ -1,11 +1,10 @@
 import FreshWatcher from "./freshwatcher.ts";
 import Speaker from "./speaker.ts";
 
-export default class Model {
+export default class WatcherConductor {
     private freshWatcher: FreshWatcher;
 
     constructor(private speaker: Speaker) {
-
     }
 
     startFreshWatch(programId: number) {

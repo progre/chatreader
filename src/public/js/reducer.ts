@@ -1,40 +1,42 @@
 import { combineReducers } from "redux";
+import WatcherConductor from "./models/watcherconductor.ts";
 
-import Speaker from "./models/speaker.ts";
-
-let initialLocal = {
-    speaker: <Speaker | null>null
+let initialState = {
+    local: {
+        watcherConductor: <WatcherConductor | null>null
+    },
+    fresh: {
+        enable: false,
+        programId: -1,
+        updateVisible: false
+    }
 };
 
-function local(state = initialLocal, action: Redux.Action & { payload: any }) {
+export type State = typeof initialState;
+
+function local(state = initialState.local, action: Redux.Action & { payload: any }) {
     switch (action.type) {
-        case "SET_SPEAKER":
-            return { speaker: action.payload.speaker };
+        case "SET_WATCHER_CONDUCTOR":
+            return { watcherConductor: action.payload.watcherConductor };
         default:
             return state;
     }
 }
 
-let initialFresh = {
-    available: false,
-    programId: -1,
-    updateVisible: false
-};
-
-function fresh(state = initialFresh, action: Redux.Action & { payload: any }) {
+function fresh(state = initialState.fresh, action: Redux.Action & { payload: any }) {
     switch (action.type) {
         case "SET_PROGRAM_ID":
             return Object.assign({},
                 state,
                 { programId: action.payload.id });
-        case "ENABLE":
+        case "START":
             return Object.assign({},
                 state,
-                { availability: true });
-        case "DISABLE":
+                { enable: true });
+        case "STOP":
             return Object.assign({},
                 state,
-                { availability: false });
+                { enable: false });
         default:
             return state;
     }
