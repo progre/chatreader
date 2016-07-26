@@ -18,7 +18,7 @@ export default {
     start() {
         return async (dispatch: Redux.Dispatch<{}>, getState: () => State) => {
             let state = getState();
-            state.local.watcherConductor!.startFreshWatch(state.fresh.programId);
+            state.local.watcherConductor!.startFreshWatch(state.fresh.editingProgramId);
             dispatch({ type: "START" });
         };
     },

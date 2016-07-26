@@ -12,7 +12,7 @@ export default function Switch(
             <div className="btn-group">
                 <button
                     className={
-                        "btn btn-secondary-outline"
+                        "btn btn-info-outline"
                         + (!props.enable ? " active" : "")
                     }
                     style={{ width: "3em" }}

@@ -13,11 +13,14 @@ class App extends React.Component<Props, {}> {
     }
 
     render() {
-        let freshState = this.props.fresh;
+        let fresh = this.props.fresh;
         let freshProps = {
-            enable: freshState.enable,
-            programId: freshState.programId,
-            updateVisible: freshState.updateVisible,
+            enable: fresh.workingProgramId >= 0,
+            programId: fresh.editingProgramId,
+            updateVisible: (
+                fresh.workingProgramId >= 0
+                && fresh.workingProgramId !== fresh.editingProgramId
+            ),
             onProgramIdChange: (e: React.FormEvent) =>
                 this.props.setProgramId(
                     Number.parseInt((e.target as HTMLInputElement).value)),

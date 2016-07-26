@@ -12,17 +12,21 @@ export default function TextBoxWithUpdateButton(
         <div className="input-group">
             <input
                 type="number"
+                min="0"
                 className="form-control"
                 value={props.value}
-                onChange={e => props.onChange(e) }
+                onChange={e => props.onChange(e)}
                 />
             <span className="input-group-btn">
                 <button
-                    className="btn btn-primary"
-                    style={{ display: (props.buttonVisible ? "" : "none") }}
-                    onClick={e => props.onButtonClick(e) }
+                    className={"btn " + (
+                        props.buttonVisible
+                            ? "btn-primary"
+                            : "btn-secondary")}
+                    disabled={!props.buttonVisible}
+                    onClick={e => props.onButtonClick(e)}
                     >
-                    Update
+                    ↻
                 </button>
             </span>
         </div>

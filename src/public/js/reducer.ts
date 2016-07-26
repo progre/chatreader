@@ -6,9 +6,8 @@ let initialState = {
         watcherConductor: <WatcherConductor | null>null
     },
     fresh: {
-        enable: false,
-        programId: -1,
-        updateVisible: false
+        workingProgramId: -1,
+        editingProgramId: 0
     }
 };
 
@@ -28,15 +27,19 @@ function fresh(state = initialState.fresh, action: Redux.Action & { payload: any
         case "SET_PROGRAM_ID":
             return Object.assign({},
                 state,
-                { programId: action.payload.id });
+                { editingProgramId: action.payload.id });
         case "START":
             return Object.assign({},
                 state,
-                { enable: true });
+                {
+                    workingProgramId: state.editingProgramId
+                });
         case "STOP":
             return Object.assign({},
                 state,
-                { enable: false });
+                {
+                    workingProgramId: -1
+                });
         default:
             return state;
     }
