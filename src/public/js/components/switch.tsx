@@ -12,23 +12,27 @@ export default function Switch(
             <div className="btn-group">
                 <button
                     className={
-                        "btn btn-info-outline"
-                        + (!props.enable ? " active" : "")
+                        "btn"
+                        + (props.enable
+                            ? " btn-primary active"
+                            : " btn-primary-outline")
                     }
                     style={{ width: "3em" }}
-                    onClick={e => props.onDisableClick(e) }
+                    onClick={e => props.onEnableClick(e)}
                     >
-                    O
+                    I
                 </button>
                 <button
                     className={
-                        "btn btn-primary-outline"
-                        + (props.enable ? " active" : "")
+                        "btn"
+                        + (!props.enable
+                            ? " btn-primary active"
+                            : " btn-primary-outline")
                     }
                     style={{ width: "3em" }}
-                    onClick={e => props.onEnableClick(e) }
+                    onClick={e => props.onDisableClick(e)}
                     >
-                    I
+                    O
                 </button>
             </div>
         </div>
