@@ -15,19 +15,22 @@ export default function FreshSetting(
 ) {
     return (
         <div className="row">
-            <span className="col-xs-8">
+            <label className="col-xs-4 form-control-static text-xs-right">
+                FRESH! by AbemaTV:
+            </label>
+            <span className="col-xs-4">
                 <TextBoxWithUpdateButton
                     value={props.programId}
                     buttonVisible={props.updateVisible}
-                    onChange={e => props.onProgramIdChange(e) }
-                    onButtonClick={e => props.onUpdateClick(e) }
+                    onChange={e => props.onProgramIdChange(e)}
+                    onButtonClick={e => props.onUpdateClick(e)}
                     />
             </span>
             <span className="col-xs-4">
                 <Switch
                     enable={props.enable}
-                    onEnableClick={e => props.onEnableClick(e) }
-                    onDisableClick={e => props.onDisableClick(e) }
+                    onEnableClick={e => props.onEnableClick(e)}
+                    onDisableClick={e => props.onDisableClick(e)}
                     />
             </span>
         </div>
