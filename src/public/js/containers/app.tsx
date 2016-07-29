@@ -16,8 +16,6 @@ class App extends React.Component<Props, {}> {
     render() {
         let fresh = this.props.fresh;
         let enable = fresh.workingProgramId >= 0;
-        console.log(fresh.workingProgramId, FreshWatcher.parseURLOrProgramId(fresh.urlOrProgramId));
-        console.log(typeof fresh.workingProgramId, typeof FreshWatcher.parseURLOrProgramId(fresh.urlOrProgramId));
         let freshProps = {
             enable,
             urlOrProgramId: fresh.urlOrProgramId,
