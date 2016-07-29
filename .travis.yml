@@ -1,17 +1,18 @@
-sudo: false
+sudo: required
+dist: trusty
 language: node_js
 node_js: 6
-addons:
-  apt:
-    packages:
-    - wine
 cache:
   directories:
   - node_modules
+before_script:
+- sudo rm /etc/apt/sources.list.d/google-chrome.list
+- sudo dpkg --add-architecture i386
+- sudo apt-get update
+- sudo apt-get install -y wine1.6
 script:
 - npm run typings
 - npm run build
-after_script:
 - npm run package
 deploy:
   provider: releases
