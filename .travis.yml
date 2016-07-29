@@ -4,12 +4,23 @@ node_js: 6
 addons:
   apt:
     packages:
-      - wine
+    - wine
 cache:
   directories:
-    - node_modules
+  - node_modules
 script:
-  - npm run typings
-  - npm run build
+- npm run typings
+- npm run build
 after_script:
-  - npm run package
+- npm run package
+deploy:
+  provider: releases
+  api_key:
+    secure: ybBaVGde1AqSAs6HIaIcIuxmLiQqeB5jA0q20rPcQ9prqwZGr8p7xRgfC4amceXe0SlLqDUPnHZ5/k4myBaXuJOaCKscjUCd6VXI6S932tzx6KuRhh65jT8kkX8tvoZ0bexdx77uYuNqmLweS8OKTurzgqTIGbRaw5dvbpaNfjkTMXCvhdd/5D/bbfVjYahKCcQD7TraaTnFbT6YWWFaTT32Dcu4wMGp9wRw7NsRSwE/PJfzFdVldcic3OsGbgArabaZK+uFML86NoQOAFhqMEysp6XDngvw0Y3rhkEmcuHGr+Hu5E/0XiFeqZWOoa22Bv/0gSXIr+Fx+z4ldYgu2CCprKYwcnxXFYxAmT22My4Cd4kqFkVQVJCTPg6+xizsuEI30jJiOkaotJrYlqYkDAuEpTt5LSkQa6bIVSzOx1ZdWlaHoiuR0q0F/LyzCicGHgj9pgbUtp07bdRM4DKcvbab7nhUg3yxpLMNG6R4D8fNOINIMM7UlfYwihGAeMzpGhd3P3EXLGSMU3zPAhsvF9cJYcMFAGUyHzrAe5VrmISR2Qzli2y/sursqUvSgdHkaLyj4lx9PDKofOlGmUotuN8sX3IAHUoEGm5wwaU7WJYeH8YMVIjjcnDhmfdkKaM2J6lkRGH2Iw8aHWBlqrrId7f5xWZs1bGFkENhvX1tKSU=
+  file:
+    - chatreader-linux.zip
+    - chatreader-mac.zip
+    - chatreader-win.zip
+  prerelease: true
+  on:
+    tags: true
