@@ -7,7 +7,7 @@ let initialState = {
     },
     fresh: {
         workingProgramId: -1,
-        editingProgramId: 0
+        editingURLOrProgramId: ""
     }
 };
 
@@ -28,11 +28,11 @@ function fresh(state = initialState.fresh, action: Redux.Action & { payload: any
             return Object.assign({},
                 state,
                 { editingProgramId: action.payload.id });
-        case "START":
+        case "START_SUCCEEDED":
             return Object.assign({},
                 state,
                 {
-                    workingProgramId: state.editingProgramId
+                    workingProgramId: state.editingURLOrProgramId
                 });
         case "STOP":
             return Object.assign({},

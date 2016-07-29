@@ -5,7 +5,7 @@ import TextBoxWithUpdateButton from "./textboxwithupdatebutton.tsx";
 export default function FreshSetting(
     props: {
         enable: boolean,
-        programId: number,
+        urlOrProgramId: string,
         updateVisible: boolean,
         onProgramIdChange: (e: React.FormEvent) => void,
         onUpdateClick: (e: React.MouseEvent) => void,
@@ -20,7 +20,7 @@ export default function FreshSetting(
             </label>
             <span className="col-xs-4">
                 <TextBoxWithUpdateButton
-                    value={props.programId}
+                    value={props.urlOrProgramId}
                     buttonVisible={props.updateVisible}
                     onChange={e => props.onProgramIdChange(e)}
                     onButtonClick={e => props.onUpdateClick(e)}

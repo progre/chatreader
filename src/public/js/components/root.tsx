@@ -5,7 +5,7 @@ export default function Root(
     props: {
         fresh: {
             enable: boolean,
-            programId: number,
+            urlOrProgramId: string,
             updateVisible: boolean,
             onProgramIdChange: (e: React.FormEvent) => void,
             onUpdateClick: (e: React.MouseEvent) => void,
@@ -19,7 +19,7 @@ export default function Root(
         <div className="container-fluid">
             <FreshSetting
                 enable={fresh.enable}
-                programId={fresh.programId}
+                urlOrProgramId={fresh.urlOrProgramId}
                 updateVisible={fresh.updateVisible}
                 onProgramIdChange={e => fresh.onProgramIdChange(e) }
                 onUpdateClick={e => fresh.onUpdateClick(e) }

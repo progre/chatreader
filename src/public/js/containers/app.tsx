@@ -16,7 +16,7 @@ class App extends React.Component<Props, {}> {
         let fresh = this.props.fresh;
         let freshProps = {
             enable: fresh.workingProgramId >= 0,
-            programId: fresh.editingProgramId,
+            urlOrProgramId: fresh.editingURLOrProgramId,
             updateVisible: (
                 fresh.workingProgramId >= 0
                 && fresh.workingProgramId !== fresh.editingProgramId

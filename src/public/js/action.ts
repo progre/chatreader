@@ -8,7 +8,10 @@ export default {
             let speaker = await Speaker.create();
             dispatch({ type: "SET_SPEAKER", payload: { speaker } });
             let watcherConductor = new WatcherConductor(speaker);
-            dispatch({ type: "SET_WATCHER_CONDUCTOR", payload: { watcherConductor } });
+            dispatch({
+                type: "SET_WATCHER_CONDUCTOR",
+                payload: { watcherConductor }
+            });
         };
     },
 
@@ -18,8 +21,15 @@ export default {
     start() {
         return async (dispatch: Redux.Dispatch<{}>, getState: () => State) => {
             let state = getState();
-            state.local.watcherConductor!.startFreshWatch(state.fresh.editingProgramId);
-            dispatch({ type: "START" });
+            let programId = state.local.watcherConductor!.parseURLOrProgramId(
+                state.fresh.editingURLOrProgramId);
+            if (programId == null) {
+                return dispatch({ type: "START_FAILED" });
+            }
+            return dispatch({
+                type: "START_SUCCEEDED",
+                payload: { programId }
+            });
         };
     },
 
