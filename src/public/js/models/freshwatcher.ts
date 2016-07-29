@@ -5,6 +5,19 @@ export default class AbemaWatcher extends EventEmitter {
     private latestMillisecond = -1;
     private timer: NodeJS.Timer;
 
+    static parseURLOrProgramId(urlOrProgramId: string) {
+        let maybeProgramId = parseInt(urlOrProgramId, 10);
+        if (!isNaN(maybeProgramId)) {
+            return maybeProgramId;
+        }
+        let m = /https:\/\/abemafresh.tv\/.+\/([0-9]+)/
+            .exec(urlOrProgramId);
+        if (m == null) {
+            return null;
+        }
+        return parseInt(m[1], 10);
+    }
+
     constructor(private programId: number) {
         super();
     }

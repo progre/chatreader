@@ -4,12 +4,18 @@ export default function TextBoxWithUpdateButton(
     props: {
         value: string,
         buttonVisible: boolean,
+        buttonDisabled: boolean,
         onButtonClick: (e: React.MouseEvent) => void,
         onChange: (e: React.FormEvent) => void
     }
 ) {
     return (
-        <div className="input-group">
+        <div className={
+            props.buttonVisible
+                ? "input-group"
+                : ""
+            }
+            >
             <input
                 type="text"
                 className="form-control"
@@ -17,13 +23,17 @@ export default function TextBoxWithUpdateButton(
                 onChange={e => props.onChange(e)}
                 placeholder="URL or program id"
                 />
-            <span className="input-group-btn">
+            <span
+                className="input-group-btn"
+                style={
+                    props.buttonVisible
+                        ? {}
+                        : { display: "none" }
+                }
+                >
                 <button
-                    className={"btn " + (
-                        props.buttonVisible
-                            ? "btn-primary"
-                            : "btn-secondary")}
-                    disabled={!props.buttonVisible}
+                    className="btn"
+                    disabled={props.buttonDisabled}
                     onClick={e => props.onButtonClick(e)}
                     >
                     ↻

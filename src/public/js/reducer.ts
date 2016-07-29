@@ -7,7 +7,7 @@ let initialState = {
     },
     fresh: {
         workingProgramId: -1,
-        editingURLOrProgramId: ""
+        urlOrProgramId: ""
     }
 };
 
@@ -24,15 +24,15 @@ function local(state = initialState.local, action: Redux.Action & { payload: any
 
 function fresh(state = initialState.fresh, action: Redux.Action & { payload: any }) {
     switch (action.type) {
-        case "SET_PROGRAM_ID":
+        case "SET_URL_OR_PROGRAM_ID":
             return Object.assign({},
                 state,
-                { editingProgramId: action.payload.id });
+                { urlOrProgramId: action.payload.urlOrProgramId });
         case "START_SUCCEEDED":
             return Object.assign({},
                 state,
                 {
-                    workingProgramId: state.editingURLOrProgramId
+                    workingProgramId: action.payload.programId
                 });
         case "STOP":
             return Object.assign({},

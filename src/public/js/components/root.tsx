@@ -7,7 +7,7 @@ export default function Root(
             enable: boolean,
             urlOrProgramId: string,
             updateVisible: boolean,
-            onProgramIdChange: (e: React.FormEvent) => void,
+            onURLOrProgramIdChange: (e: React.FormEvent) => void,
             onUpdateClick: (e: React.MouseEvent) => void,
             onEnableClick: (e: React.MouseEvent) => void,
             onDisableClick: (e: React.MouseEvent) => void
@@ -21,7 +21,7 @@ export default function Root(
                 enable={fresh.enable}
                 urlOrProgramId={fresh.urlOrProgramId}
                 updateVisible={fresh.updateVisible}
-                onProgramIdChange={e => fresh.onProgramIdChange(e) }
+                onURLOrProgramIdChange={e => fresh.onURLOrProgramIdChange(e) }
                 onUpdateClick={e => fresh.onUpdateClick(e) }
                 onEnableClick={e => fresh.onEnableClick(e) }
                 onDisableClick={e => fresh.onDisableClick(e) }

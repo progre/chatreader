@@ -2,6 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Root from "../components/root.tsx";
+import FreshWatcher from "../models/freshwatcher.ts";
 import action from "../action.ts";
 import { State } from "../reducer.ts";
 
@@ -14,16 +15,19 @@ class App extends React.Component<Props, {}> {
 
     render() {
         let fresh = this.props.fresh;
+        let enable = fresh.workingProgramId >= 0;
+        console.log(fresh.workingProgramId, FreshWatcher.parseURLOrProgramId(fresh.urlOrProgramId));
+        console.log(typeof fresh.workingProgramId, typeof FreshWatcher.parseURLOrProgramId(fresh.urlOrProgramId));
         let freshProps = {
-            enable: fresh.workingProgramId >= 0,
-            urlOrProgramId: fresh.editingURLOrProgramId,
+            enable,
+            urlOrProgramId: fresh.urlOrProgramId,
             updateVisible: (
-                fresh.workingProgramId >= 0
-                && fresh.workingProgramId !== fresh.editingProgramId
+                enable
+                && fresh.workingProgramId !== FreshWatcher.parseURLOrProgramId(fresh.urlOrProgramId)
             ),
-            onProgramIdChange: (e: React.FormEvent) =>
-                this.props.setProgramId(
-                    Number.parseInt((e.target as HTMLInputElement).value)),
+            onURLOrProgramIdChange: (e: React.FormEvent) =>
+                this.props.setURLOrProgramId(
+                    (e.target as HTMLInputElement).value),
             onUpdateClick: (e: React.MouseEvent) =>
                 this.props.start(),
             onEnableClick: (e: React.MouseEvent) =>

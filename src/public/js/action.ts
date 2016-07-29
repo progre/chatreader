@@ -1,4 +1,5 @@
 import Speaker from "./models/speaker.ts";
+import FreshWatcher from "./models/freshwatcher.ts";
 import WatcherConductor from "./models/watcherconductor.ts";
 import { State } from "./reducer.ts";
 
@@ -15,17 +16,18 @@ export default {
         };
     },
 
-    setProgramId: (id: number) =>
-        ({ type: "SET_PROGRAM_ID", payload: { id } }),
+    setURLOrProgramId: (urlOrProgramId: string) =>
+        ({ type: "SET_URL_OR_PROGRAM_ID", payload: { urlOrProgramId } }),
 
     start() {
         return async (dispatch: Redux.Dispatch<{}>, getState: () => State) => {
             let state = getState();
-            let programId = state.local.watcherConductor!.parseURLOrProgramId(
-                state.fresh.editingURLOrProgramId);
+            let programId = FreshWatcher.parseURLOrProgramId(
+                state.fresh.urlOrProgramId);
             if (programId == null) {
                 return dispatch({ type: "START_FAILED" });
             }
+            state.local.watcherConductor!.startFreshWatch(programId);
             return dispatch({
                 type: "START_SUCCEEDED",
                 payload: { programId }
