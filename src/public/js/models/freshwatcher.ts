@@ -1,7 +1,8 @@
 import { EventEmitter } from "events";
 const fetch: typeof _fetch.fetch = require("node-fetch");
+import { Watcher } from "./watcher.ts";
 
-export default class AbemaWatcher extends EventEmitter {
+export default class AbemaWatcher extends EventEmitter implements Watcher {
     private latestMillisecond = -1;
     private timer: NodeJS.Timer;
 

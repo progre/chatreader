@@ -45,6 +45,7 @@
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
     "source-map-support": "^0.4.2",
+    "tmi.js": "^1.1.1",
     "tsify": "^1.0.1",
     "tslint": "^3.13.0",
     "typescript": "^2.0.0",
