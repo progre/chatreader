@@ -5,6 +5,18 @@ import { Watcher } from "./watcher.ts";
 export default class TwitchWatcher extends EventEmitter implements Watcher {
     private client: any | null;
 
+    static parseURLOrChannel(urlOrChannel: string) {
+        let urlMatcher = /https:\/\/www\.twitch\.tv\/(\S+)\/?/.exec(urlOrChannel);
+        if (urlMatcher != null) {
+            return `#${urlMatcher[1]}`;
+        }
+        let channelMatcher = /^#?(\S+)$/.exec(urlOrChannel);
+        if (channelMatcher != null) {
+            return `#${channelMatcher[1]}`;
+        }
+        return null;
+    }
+
     constructor(private channel: string) {
         super();
     }
