@@ -34,7 +34,7 @@ export default class TwitchWatcher extends EventEmitter implements Watcher {
             ) => {
                 super.emit("comment", [message]);
             });
-        await this.client.connect();
+        await this.client.connect({ reconnect: true });
     }
 
     async clear() {
