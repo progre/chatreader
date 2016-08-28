@@ -23,27 +23,31 @@ export default class AbemaWatcher extends EventEmitter implements Watcher {
         super();
     }
 
-    async watch() {
-        let comments = await getComments(this.programId);
-        this.latestMillisecond = comments[0].millisecond; // TODO: 時刻バラバラなので既読のidを取得数分くらい持っとくのがよさそう
-        this.timer = setInterval(
-            async () => {
-                try {
-                    console.log("新着コメントを確認...");
-                    let comments = (await getComments(this.programId))
-                        .filter(x => x.millisecond > this.latestMillisecond);
-                    if (comments.length <= 0) {
-                        console.log("新着なし");
-                        return;
+    watch() {
+        (async () => {
+            let comments = await getComments(this.programId);
+            this.latestMillisecond = comments.length === 0
+                ? 0
+                : comments[0].millisecond; // TODO: 時刻バラバラなので既読のidを取得数分くらい持っとくのがよさそう
+            this.timer = setInterval(
+                async () => {
+                    try {
+                        console.log("新着コメントを確認...");
+                        let comments = (await getComments(this.programId))
+                            .filter(x => x.millisecond > this.latestMillisecond);
+                        if (comments.length <= 0) {
+                            console.log("新着なし");
+                            return;
+                        }
+                        console.log(`新着 ${comments.length} 件`);
+                        this.latestMillisecond = comments[0].millisecond;
+                        this.emit("comment", comments.reverse());
+                    } catch (e) {
+                        console.error(e.stack || e);
                     }
-                    console.log(`新着 ${comments.length} 件`);
-                    this.latestMillisecond = comments[0].millisecond;
-                    super.emit("comment", comments.reverse());
-                } catch (e) {
-                    console.error(e.stack || e);
-                }
-            },
-            7 * 1000);
+                },
+                7 * 1000);
+        })().catch(e => console.error(e.stack || e));
     }
 
     clear() {
