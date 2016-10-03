@@ -2,9 +2,7 @@
     "compilerOptions": {
         "jsx": "react",
         "module": "commonjs",
-        "noImplicitAny": true,
         "noEmitOnError": true,
-        "noUnusedLocals": true,
         "skipLibCheck": true,
         "strictNullChecks": true,
         "target": "es2015"
