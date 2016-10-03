@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/index.d.ts" />
-import "babel-polyfill";
+import "whatwg-fetch";
 import * as React from "react";
 import { render } from "react-dom";
 import { createStore, applyMiddleware } from "redux";

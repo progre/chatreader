@@ -43,4 +43,3 @@ export default class TwitchWatcher extends EventEmitter implements Watcher {
         }
     }
 }
-
