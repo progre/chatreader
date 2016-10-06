@@ -44,7 +44,8 @@ module.exports = [
                     {
                         ignore: [
                             "test/",
-                            "*.ts"
+                            "*.ts",
+                            "*.tsx"
                         ]
                     })
             ])
@@ -57,12 +58,15 @@ module.exports = [
                 index: ["babel-polyfill", "./src/index.ts"],
                 "test/test": ["babel-polyfill", "./src/test/test.ts"]
             },
-            externals: /^(?!^\.)/,
+            externals: /^(?!\.)/,
             module: {
                 loaders: [{
                     test: /\.tsx?$/,
                     loader: "babel-loader?presets[]=modern-node!ts-loader"
                 }]
+            },
+            node: {
+                __dirname: false
             },
             output: {
                 filename: "lib/[name].js",
