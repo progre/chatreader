@@ -25,6 +25,7 @@ export default function TwitchSetting(
                     value={props.urlOrChannel}
                     buttonVisible={props.updateVisible}
                     buttonDisabled={!valid}
+                    placeHolder="URL or Channel"
                     onChange={e => props.onURLOrChannelChange(e)}
                     onButtonClick={e => props.onUpdateClick(e)}
                     />

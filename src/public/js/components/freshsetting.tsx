@@ -25,6 +25,7 @@ export default function FreshSetting(
                     value={props.urlOrProgramId}
                     buttonVisible={props.updateVisible}
                     buttonDisabled={!valid}
+                    placeHolder="URL or Program Id"
                     onChange={e => props.onURLOrProgramIdChange(e)}
                     onButtonClick={e => props.onUpdateClick(e)}
                     />

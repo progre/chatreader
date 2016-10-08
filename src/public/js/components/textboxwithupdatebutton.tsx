@@ -2,11 +2,12 @@ import * as React from "react";
 
 export default function TextBoxWithUpdateButton(
     props: {
-        value: string,
-        buttonVisible: boolean,
-        buttonDisabled: boolean,
-        onButtonClick: (e: React.MouseEvent) => void,
-        onChange: (e: React.FormEvent) => void
+        value: string;
+        buttonVisible: boolean;
+        buttonDisabled: boolean;
+        placeHolder: string;
+        onButtonClick: (e: React.MouseEvent) => void;
+        onChange: (e: React.FormEvent) => void;
     }
 ) {
     return (
@@ -14,14 +15,14 @@ export default function TextBoxWithUpdateButton(
             props.buttonVisible
                 ? "input-group"
                 : ""
-            }
+        }
             >
             <input
                 type="text"
                 className="form-control"
                 value={props.value}
                 onChange={e => props.onChange(e)}
-                placeholder="URL or program id"
+                placeholder={props.placeHolder}
                 />
             <span
                 className="input-group-btn"
