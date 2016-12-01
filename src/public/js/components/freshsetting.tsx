@@ -18,7 +18,7 @@ export default function FreshSetting(
     return (
         <div className="row">
             <label className="col-xs-4 form-control-static text-xs-right">
-                FRESH! by AbemaTV:
+                FRESH!:
             </label>
             <span className="col-xs-4">
                 <TextBoxWithUpdateButton

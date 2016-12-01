@@ -1,7 +1,7 @@
 import { EventEmitter } from "events";
 import { Watcher } from "./watcher.ts";
 
-export default class AbemaWatcher extends EventEmitter implements Watcher {
+export default class FreshWatcher extends EventEmitter implements Watcher {
     private latestMillisecond = -1;
     private timer: NodeJS.Timer;
 
@@ -10,7 +10,7 @@ export default class AbemaWatcher extends EventEmitter implements Watcher {
         if (!isNaN(maybeProgramId)) {
             return maybeProgramId;
         }
-        let m = /https:\/\/abemafresh.tv\/.+\/([0-9]+)/
+        let m = /https:\/\/freshlive.tv\/.+\/([0-9]+)/
             .exec(urlOrProgramId);
         if (m == null) {
             return null;
@@ -56,7 +56,7 @@ export default class AbemaWatcher extends EventEmitter implements Watcher {
 
 async function getComments(programId: number) {
     let res = await fetch(
-        `https://abemafresh.tv/proxy/Comment;`
+        `https://freshlive.tv/proxy/Comment;`
         + `count=50;`
         + `order=desc;`
         + `programId=${programId}`);
