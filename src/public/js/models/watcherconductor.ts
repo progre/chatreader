@@ -14,7 +14,7 @@ export default class WatcherConductor {
         this.freshWatcher = new FreshWatcher(programId);
         this.freshWatcher.on("comment", (data: any[]) => {
             for (let datum of data) {
-                this.speaker.speak("フレッシュ。" + datum.comment);
+                this.speaker.speak("FRESH!。" + datum.comment);
             }
         });
         this.freshWatcher.watch();
