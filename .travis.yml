@@ -19,6 +19,7 @@ deploy:
     - chatreader-linux.zip
     - chatreader-mac.zip
     - chatreader-win.zip
-  prerelease: true
   on:
     tags: true
+  prerelease: true
+  skip_cleanup: true
